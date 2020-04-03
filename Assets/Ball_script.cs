@@ -7,10 +7,11 @@ public class Ball_script : MonoBehaviour
     // Start is called before the first frame update
     public GameObject arm;
     private Vector3 startPosition_Ball;
-    private Vector3 startPosition_Arm;
+    private Quaternion startRotation_Arm;
     void Start()
     {
         startPosition_Ball = transform.localPosition;
+        startRotation_Arm = arm.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -18,16 +19,8 @@ public class Ball_script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("pozycja ramienia: "
-                + " X:" + arm.transform.localPosition.x
-                + " Y:" + arm.transform.localPosition.y
-                + " Z:" + arm.transform.localPosition.z);
-            Debug.Log("startowa pozycja ramienia: "
-                + " X:" + startPosition_Arm.x
-                + " Y:" + startPosition_Arm.y
-                + " Z:" + startPosition_Arm.z);
             transform.position = startPosition_Ball;
-
+            arm.transform.rotation = startRotation_Arm;
         }
     }
 }
