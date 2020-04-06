@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,28 +15,19 @@ public class Target_camera : MonoBehaviour
         wall_position = wall.transform.localPosition;
         start_camera_position = transform.localPosition;
         targetCamera = GameObject.Find("Target_Cam").GetComponent<Camera>();
-        
-        
-
+        Debug.Log("pozycja muru startowa:"
+           + " X=" + wall_position.x.ToString()
+           + " Y=" + wall_position.y.ToString()
+           + " Z=" + wall_position.z.ToString());
+       
+        float x_position = wall_position.x - 0.1f;
+        targetCamera.transform.localPosition = new Vector3(x_position
+                                        , wall.transform.localPosition.y + 3
+                                        , wall.transform.localPosition.z);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        float x_position = wall_position.x - (Mathf.Abs(start_camera_position.x) - Mathf.Abs(wall_position.x));
-       
-        Debug.Log("roznica na kamerze : " + x_position.ToString());
-        targetCamera.transform.position = new Vector3( wall_position.x - 0.1f
-                                        , wall.transform.position.y + 3
-                                        , wall.transform.position.z);
-        Debug.Log("pozycja muru :"
-            + " X=" + wall_position.x.ToString()
-            + " Y=" + wall_position.y.ToString()
-            + " Z=" + wall_position.z.ToString());
-
-        Debug.Log("pozycja kamery :"
-            + " X=" + targetCamera.transform.localPosition.x.ToString()
-            + " Y=" + targetCamera.transform.localPosition.y.ToString()
-            + " Z=" + targetCamera.transform.localPosition.z.ToString());
+    { 
     }
 }

@@ -6,12 +6,14 @@ public class Ball_script : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject arm;
+    public GameObject wallLocation;
     private Vector3 startPosition_Ball;
     private Quaternion startRotation_Arm;
     void Start()
     {
         startPosition_Ball = transform.localPosition;
         startRotation_Arm = arm.transform.localRotation;
+
     }
 
     // Update is called once per frame
