@@ -13,7 +13,6 @@ public class Ball_script : MonoBehaviour
     {
         startPosition_Ball = transform.localPosition;
         startRotation_Arm = arm.transform.localRotation;
-
     }
 
     // Update is called once per frame

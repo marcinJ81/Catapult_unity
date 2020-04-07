@@ -15,8 +15,7 @@ namespace Assets
         void Start()
         {
             Vector3 startPosition = ball.transform.localPosition;
-            transform.position = startPosition;
-           
+            transform.position = startPosition;          
         }
         private void Update()
         {
