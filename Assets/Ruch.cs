@@ -9,6 +9,8 @@ public class Ruch : MonoBehaviour
     
     public GameObject target_position;
     public GameObject ball_position;
+    public GameObject brake_object;
+    private GameObject arm_object;
     public float Vr =  0f;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class Ruch : MonoBehaviour
         MainCamera = GameObject.Find("Main_Cam").GetComponent<Camera>();
         TargetCamera = GameObject.Find("Target_Cam").GetComponent<Camera>();
         BallCamera = GameObject.Find("Ball_Cam").GetComponent<Camera>();
+       // arm_object = GameObject.FindGameObjectWithTag("MainPartCatapult");
     }
 
     // Update is called once per frame
@@ -28,7 +31,16 @@ public class Ruch : MonoBehaviour
         SetEnabledCamera(KeyCode.B, false, false, true);
         //Throw ball
         ThrowBall(KeyCode.Space,target_position.transform.position,ball_position.transform.position,1.0f);
-
+        //use keys arrow
+        RotationLeftORightGameObject(brake_object, KeyCode.LeftArrow, 0, -1, 0.1f);
+        RotationLeftORightGameObject(brake_object, KeyCode.RightArrow, 0, 1, 0.1f);
+    }
+    private void RotationLeftORightGameObject(GameObject catapultBody,KeyCode key, int x_value, int y_value, float angle_value)
+    {
+        if (Input.GetKey(key))
+        {
+            catapultBody.transform.Rotate(new Vector3(x_value, y_value), angle_value);  
+        }
     }
 
    private void SetEnabledCamera(KeyCode key, bool MainCam, bool TargetCam, bool BallCam)
@@ -48,11 +60,10 @@ public class Ruch : MonoBehaviour
             //angularVelocity mierzy predkosc katowa, stopnie na sekune
             Vr = Vr == 0 ? -6.0f : -Vr;
             GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
-            Debug.Log("Pozycja"
-                + " X: " + Vo.x
-                + " Y: " + Vo.y
-                + " Z: " + Vo.z);
-           
+            //Debug.Log("Pozycja"
+            //    + " X: " + Vo.x
+            //    + " Y: " + Vo.y
+            //    + " Z: " + Vo.z);          
         }
     }
 
