@@ -2890,9 +2890,10 @@ MonoBehaviour:
   target_position: {fileID: 1069927831}
   ball_position: {fileID: 1843956031}
   brake_object: {fileID: 216889775}
-  arm_object: {fileID: 1376078127}
+  base_object: {fileID: 1376078127}
   left_arm_break: {fileID: 1724260843}
   right_arm_break: {fileID: 1901727526}
+  arm_object: {fileID: 84094591}
   Vr: 9
 --- !u!1 &1438212577
 GameObject:
@@ -3908,6 +3909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arm: {fileID: 1376078127}
   wallLocation: {fileID: 0}
+  bodyCatapult: {fileID: 216889775}
 --- !u!1 &1901727526
 GameObject:
   m_ObjectHideFlags: 0

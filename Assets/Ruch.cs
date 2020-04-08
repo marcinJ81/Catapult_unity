@@ -10,9 +10,10 @@ public class Ruch : MonoBehaviour
     public GameObject target_position;
     public GameObject ball_position;
     public GameObject brake_object;
-    public GameObject arm_object;
+    public GameObject base_object;
     public GameObject left_arm_break;
     public GameObject right_arm_break;
+    public GameObject arm_object;
     public float Vr =  0f;
     // Start is called before the first frame update
     void Start()
@@ -39,13 +40,21 @@ public class Ruch : MonoBehaviour
     }
     private void RotationLeftORightGameObject(GameObject catapultBody,KeyCode key, int x_value, int y_value, float angle_value)
     {
+        
         if (Input.GetKey(key))
         {
-            catapultBody.transform.Rotate(new Vector3(x_value, y_value), angle_value);  
-            arm_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-            left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-            right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-
+            float WLmax = 0.697f;
+            float WRmax = 0.7042f;
+            float rotationValue = base_object.transform.rotation.w;
+            //not working good
+            if ((rotationValue > WLmax  ) ^ (rotationValue < WRmax ))
+            {
+                catapultBody.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+                base_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+                left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+                right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+            }
+            Debug.Log("kąt Wartość baza = " + base_object.transform.rotation.w.ToString());
             Debug.Log("kąt Wartość = " + arm_object.transform.rotation.w.ToString());
         }
     }
