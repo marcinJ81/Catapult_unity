@@ -70,6 +70,7 @@
     <Compile Include="Assets\Ruch.cs" />
     <Compile Include="Assets\SRandomObjectPosition.cs" />
     <Compile Include="Assets\Target_camera.cs" />
+    <Compile Include="Assets\Target_Circle_script.cs" />
     <Compile Include="Assets\Wall_script.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProject/Catapult5/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -31,6 +31,7 @@ public class Ruch : MonoBehaviour
         SetEnabledCamera(KeyCode.Alpha1, false, true, false);
         SetEnabledCamera(KeyCode.Alpha2, true, false, false);
         SetEnabledCamera(KeyCode.Alpha3, false, false, true);
+
         //Throw ball
         ThrowBall(KeyCode.Space,target_position.transform.position,ball_position.transform.position,1.0f);
        
