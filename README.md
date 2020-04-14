@@ -36,9 +36,19 @@ I added some elements to this project. I want add some effects.
 - Restart catapult and ball position
 - Change target to hanging target
 - Destroy target
-- Target hanging on the gate. Gate is moving
+- Target hanging on the gate
+- Gate is moving
 
 [![](https://github.com/marcinJ81/Catapult_unity/blob/master/Images/catapult3_1.png)](https://github.com/marcinJ81/Catapult_unity/blob/master/Images/catapult3_1.png "Example Screen")
 
-
-
+#### Next Version (0.3)
+- Change ball mass and fire power. I have Control.
+- Hit ball animation
+- Add point hit target
+- Power of the wind
+- Simple menu
+- Change target to hanging target
+- Destroy target
+- Target hanging on the gate
+- Random gate position
+[![](https://github.com/marcinJ81/Catapult_unity/blob/master/Images/catapult3_2.png)](https://github.com/marcinJ81/Catapult_unity/blob/master/Images/catapult3_2.png "Example Screen")
