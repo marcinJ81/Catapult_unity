@@ -22,4 +22,5 @@ namespace Assets
             transform.position = ball.transform.position + offset;
         }
     }
+
 }
