@@ -2854,6 +2854,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765355584}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &772336910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772336912}
+  - component: {fileID: 772336911}
+  m_Layer: 0
+  m_Name: DC_Catapult
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &772336911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772336910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348f74d71d0361345b58cb24c3730a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target_position: {fileID: 1932157558}
+  ball_gameObject: {fileID: 1843956031}
+  brake_object: {fileID: 216889775}
+  base_object: {fileID: 1376078127}
+  left_arm_break: {fileID: 1724260843}
+  right_arm_break: {fileID: 1901727526}
+  arm_object: {fileID: 84094591}
+  ground_target_position: {fileID: 1069927831}
+--- !u!4 &772336912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772336910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 103.51323, y: -60.40721, z: 30.325869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &774947776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,7 +3909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069927831}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 30, y: 1, z: 0}
+  m_LocalPosition: {x: 60, y: 1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4475,12 +4526,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_position: {fileID: 1069927831}
-  ball_position: {fileID: 1843956031}
+  ball_gameObject: {fileID: 1843956031}
   brake_object: {fileID: 216889775}
   base_object: {fileID: 1376078127}
   left_arm_break: {fileID: 1724260843}
   right_arm_break: {fileID: 1901727526}
   arm_object: {fileID: 84094591}
+  ground_target_position: {fileID: 1069927831}
+  DC_mainCatapult: {fileID: 772336910}
   Vr: 9
 --- !u!1 &1447822586
 GameObject:

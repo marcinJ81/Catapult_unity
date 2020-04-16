@@ -63,16 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Ball_Camera.cs" />
-    <Compile Include="Assets\Ball_script.cs" />
-    <Compile Include="Assets\GateMethods.cs" />
-    <Compile Include="Assets\Instructions_script.cs" />
-    <Compile Include="Assets\IRandomizeObjectPosition.cs" />
-    <Compile Include="Assets\Ruch.cs" />
-    <Compile Include="Assets\SRandomObjectPosition.cs" />
-    <Compile Include="Assets\Target_camera.cs" />
-    <Compile Include="Assets\Target_Circle_script.cs" />
-    <Compile Include="Assets\Wall_script.cs" />
+    <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
+    <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
+    <Compile Include="Assets\Scripts\Gate_scripts\GateMethods.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Calculating_Velocity.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\DC_Catapult.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Ruch.cs" />
+    <Compile Include="Assets\Scripts\Random_methods\Instructions_script.cs" />
+    <Compile Include="Assets\Scripts\Random_methods\IRandomizeObjectPosition.cs" />
+    <Compile Include="Assets\Scripts\Random_methods\SRandomObjectPosition.cs" />
+    <Compile Include="Assets\Scripts\Target_scripts\Target_camera.cs" />
+    <Compile Include="Assets\Scripts\Target_scripts\Target_Circle_script.cs" />
+    <Compile Include="Assets\Scripts\Target_scripts\Wall_script.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProject/Catapult5/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
