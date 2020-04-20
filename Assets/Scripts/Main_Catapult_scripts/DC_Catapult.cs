@@ -13,24 +13,32 @@ public class DC_Catapult : MonoBehaviour, IDCContainerList
     public GameObject arm_object;
     public GameObject ground_target_position;
 
-    public List<GameObject> ListForMainCatapult()
+    private List<DCDTO> ListDependency;
+
+    public DC_Catapult()
     {
-        List<GameObject> result = new List<GameObject>();
-        result.Add(this.target_position);
-        result.Add(this.ball_gameObject);
-        result.Add(this.brake_object);
-        result.Add(this.base_object);
-        result.Add(this.left_arm_break);
-        result.Add(this.right_arm_break);
-        result.Add(this.arm_object);
-        result.Add(this.ground_target_position);
-        return result;
+        ListDependency = new List<DCDTO>()
+        {
+            new DCDTO() { objectName = "tartget_position", objectValue = target_position },
+            new DCDTO() { objectName = "ball_gameObject", objectValue = ball_gameObject },
+            new DCDTO() { objectName = "brake_object", objectValue = brake_object },
+            new DCDTO() { objectName = "left_arm_break", objectValue = left_arm_break },
+            new DCDTO() { objectName = "base_object", objectValue = base_object },
+            new DCDTO() { objectName = "right_arm_break", objectValue = right_arm_break },
+            new DCDTO() { objectName = "arm_object", objectValue = arm_object },
+            new DCDTO() { objectName = "ground_target_position", objectValue = ground_target_position }
+        };
+    }
+    
+    public List<DCDTO> ListObject()
+    {
+        return ListDependency;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -43,5 +51,11 @@ public class DC_Catapult : MonoBehaviour, IDCContainerList
 }
 public interface IDCContainerList
 {
-    List<GameObject> ListForMainCatapult();
+    List<DCDTO> ListObject();
+}
+
+public class DCDTO
+{
+   public string objectName { get; set; }
+   public GameObject objectValue { get; set; }
 }

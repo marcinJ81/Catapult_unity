@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{CAC850A3-8647-56FB-9306-E38BAA9946AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseTestConnetc", "..\DataBaseTestConnetc\DataBaseTestConnetc.csproj", "{1F94D948-BCE0-4D9A-B62C-DFCC59DDDAE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,12 +15,11 @@ Global
 		{CAC850A3-8647-56FB-9306-E38BAA9946AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC850A3-8647-56FB-9306-E38BAA9946AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC850A3-8647-56FB-9306-E38BAA9946AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F94D948-BCE0-4D9A-B62C-DFCC59DDDAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F94D948-BCE0-4D9A-B62C-DFCC59DDDAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F94D948-BCE0-4D9A-B62C-DFCC59DDDAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F94D948-BCE0-4D9A-B62C-DFCC59DDDAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {163E1928-6833-49C4-9D61-0B5CE0FA57AB}
 	EndGlobalSection
 EndGlobal
