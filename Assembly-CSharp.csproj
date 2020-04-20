@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
+    <Compile Include="Assets\Scripts\Gate_scripts\ChangeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\GateMethods.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\Calculating_Velocity.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\DC_Catapult.cs" />

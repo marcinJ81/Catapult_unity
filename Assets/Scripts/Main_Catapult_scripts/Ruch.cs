@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ruch : MonoBehaviour
@@ -16,6 +17,7 @@ public class Ruch : MonoBehaviour
     public GameObject arm_object;
     public GameObject ground_target_position;
 
+
     public float Vr =  0f;
     private Vector3 start_ball_position;
     // Start is called before the first frame update
@@ -26,8 +28,6 @@ public class Ruch : MonoBehaviour
         TargetCamera = GameObject.Find("Target_Cam").GetComponent<Camera>();
         BallCamera = GameObject.Find("Ball_Cam").GetComponent<Camera>();
         start_ball_position = ball_gameObject.transform.position;
-
-        
     }
 
     // Update is called once per frame
@@ -41,14 +41,15 @@ public class Ruch : MonoBehaviour
         //Throw ball
         ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,1.0f);
         //MoveForwardObject(15.0f, ball_gameObject, KeyCode.Space);
-      
+
         //use keys arrow to rotate
         RotationLeftORightGameObject(brake_object, KeyCode.LeftArrow, 0, -1, 0.1f);
         RotationLeftORightGameObject(brake_object, KeyCode.RightArrow, 0, 1, 0.1f);
-    }
-    private void RotationLeftORightGameObject(GameObject catapultBody,KeyCode key, int x_value, int y_value, float angle_value)
-    {
+
         
+    }
+    private void RotationLeftORightGameObject(GameObject catapultTopBreak,KeyCode key, int x_value, int y_value, float angle_value)
+    {
         if (Input.GetKey(key))
         {
             float WLmax = 0.697f;
@@ -57,7 +58,7 @@ public class Ruch : MonoBehaviour
             //not working good
             if ((rotationValue > WLmax  ) ^ (rotationValue < WRmax ))
             {
-                catapultBody.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+                catapultTopBreak.transform.Rotate(new Vector3(x_value, y_value), angle_value);
                 base_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
                 left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
                 right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
@@ -78,7 +79,7 @@ public class Ruch : MonoBehaviour
     }
     private void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time)
     {
-        Vector3 Vo = CalculateVelocity(target, origin, time);
+        //Vector3 Vo = CalculateVelocity(target, origin, time);
 
         if (Input.GetKeyDown(key))
         {
@@ -95,7 +96,7 @@ public class Ruch : MonoBehaviour
             Vector3 velocity = new Vector3(speed,0f, 0f);
             var rb = gameobject.GetComponent<Rigidbody>();
             rb.interpolation = RigidbodyInterpolation.Interpolate;
-            rb.MovePosition(gameobject.transform.position + speed * velocity * Time.fixedDeltaTime);
+            //rb.MovePosition(gameobject.transform.position + speed * velocity * Time.fixedDeltaTime);
         }
     }
     private void ShootTheTarget(float speed, GameObject target,GameObject ball,Vector3 startPosition, KeyCode key)
