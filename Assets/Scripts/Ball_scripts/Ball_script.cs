@@ -9,15 +9,21 @@ public class Ball_script : MonoBehaviour
     public GameObject wallLocation;
     public GameObject bodyCatapult;
     public GameObject textInfo;
+    public GameObject leftBrakeCatapult;
+    public GameObject rightBrakeCatapult;
 
     private Vector3 startPosition_Ball;
     private Quaternion startRotation_Arm;
     private Quaternion startRotation_Base;
+    private Quaternion startRotation_LeftBrake;
+    private Quaternion startRotation_RightBrake;
     void Start()
     {
         startPosition_Ball = transform.localPosition;
         startRotation_Arm = arm.transform.localRotation;
         startRotation_Base = bodyCatapult.transform.rotation;
+        startRotation_LeftBrake = leftBrakeCatapult.transform.rotation;
+        startRotation_RightBrake = rightBrakeCatapult.transform.rotation;
     }
 
     // Update is called once per frame
@@ -35,7 +41,13 @@ public class Ball_script : MonoBehaviour
             transform.position = startPosition_Ball;
             arm.transform.rotation = startRotation_Arm;
             bodyCatapult.transform.rotation = startRotation_Base;
+            RestartBrakeCatapultPosition();
         }
+    }
+    private void RestartBrakeCatapultPosition()
+    {
+        leftBrakeCatapult.transform.rotation = startRotation_LeftBrake;
+        rightBrakeCatapult.transform.rotation = startRotation_RightBrake;
     }
     private void ShowSpeedDistanceMassAboutBall(TextMesh textmesh, Rigidbody rb,Vector3 startballposition, Vector3 endballposition)
     {

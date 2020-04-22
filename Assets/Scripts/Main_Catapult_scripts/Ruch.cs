@@ -16,11 +16,17 @@ public class Ruch : MonoBehaviour
     public GameObject right_arm_break;
     public GameObject arm_object;
     public GameObject ground_target_position;
-
-
     public float Vr =  0f;
+
+    private Dictionary<string, float> MaxMainArmXAngle;
     private Vector3 start_ball_position;
     // Start is called before the first frame update
+    public Ruch()
+    {
+        this.MaxMainArmXAngle = new Dictionary<string, float>();
+        this.MaxMainArmXAngle.Add("WLmax", 0.697f);
+        this.MaxMainArmXAngle.Add("WRmax", 0.7042f);       
+    }
     void Start()
     {
         StartCoroutine(stopParam());
@@ -43,29 +49,41 @@ public class Ruch : MonoBehaviour
         //MoveForwardObject(15.0f, ball_gameObject, KeyCode.Space);
 
         //use keys arrow to rotate
-        RotationLeftORightGameObject(brake_object, KeyCode.LeftArrow, 0, -1, 0.1f);
-        RotationLeftORightGameObject(brake_object, KeyCode.RightArrow, 0, 1, 0.1f);
-
-        
+        RotationLeftORightGameObject(brake_object, base_object.transform.rotation.w, KeyCode.LeftArrow, 0, -1, 0.1f);
+        RotationLeftORightGameObject(brake_object, base_object.transform.rotation.w, KeyCode.RightArrow, 0, 1, 0.1f);
+  
     }
-    private void RotationLeftORightGameObject(GameObject catapultTopBreak,KeyCode key, int x_value, int y_value, float angle_value)
-    {
+    private void RotationLeftORightGameObject(GameObject catapultTopBreak, float rotationValue, KeyCode key, int x_value, int y_value, float angle_value)
+    { 
+        //not working good
         if (Input.GetKey(key))
         {
-            float WLmax = 0.697f;
-            float WRmax = 0.7042f;
-            float rotationValue = base_object.transform.rotation.w;
-            //not working good
-            if ((rotationValue > WLmax  ) ^ (rotationValue < WRmax ))
+            if (y_value > 0)
             {
-                catapultTopBreak.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-                base_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-                left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-                right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+                //right arrow
+                if ((rotationValue > MaxMainArmXAngle["WLmax"]) || (rotationValue < MaxMainArmXAngle["WRmax"]))
+                {
+                    SetNewAngle(catapultTopBreak, x_value, y_value, angle_value);
+                }
+            }
+            else
+            {
+                //left arrow
+                if ((rotationValue > MaxMainArmXAngle["WLmax"]) || (rotationValue < MaxMainArmXAngle["WRmax"]))
+                {
+                    SetNewAngle(catapultTopBreak, x_value, y_value , angle_value);
+                }
             }
             Debug.Log("kąt Wartość baza = " + base_object.transform.rotation.w.ToString());
             Debug.Log("kąt Wartość = " + arm_object.transform.rotation.w.ToString());
         }
+    }
+    private void SetNewAngle(GameObject catapultTopBreak, int x_value, int y_value, float angle_value)
+    {
+        catapultTopBreak.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+        base_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+        left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
+        right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
     }
 
    private void SetEnabledCamera(KeyCode key, bool MainCam, bool TargetCam, bool BallCam)
