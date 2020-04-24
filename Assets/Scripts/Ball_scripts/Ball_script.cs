@@ -64,10 +64,6 @@ public class Ball_script : MonoBehaviour
         textmesh.text = "Mass = " + rb.mass.ToString();
         textmesh.text += "\nSpeed= " + speed.ToString("n2");
         textmesh.text += "\nDistance= " + distance.ToString("n2");
-        textmesh.text += "\nEuler Angles= " 
-           + "x: " + mainPartOfCatapult.transform.eulerAngles.x.ToString("n0")
-           + ",y: " + mainPartOfCatapult.transform.eulerAngles.y.ToString("n0")
-           + ",z: " + mainPartOfCatapult.transform.eulerAngles.x.ToString("n0");
 
     }
    

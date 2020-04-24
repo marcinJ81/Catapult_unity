@@ -5,11 +5,11 @@ public interface IObjectControl
 {
     void MoveForwardObject(Vector3 velocity, GameObject gameobject, KeyCode key, float xmax, float xmin,float fixedTime);
 }
-public class ObjectControl : IObjectControl
+public class Gate_ChangeObjectPosition : IObjectControl
 {
-    private readonly IChangeObjectPosition moveObject;
+    private readonly IMoveGate moveObject;
 
-    public ObjectControl(IChangeObjectPosition moveObject)
+    public Gate_ChangeObjectPosition(IMoveGate moveObject)
     {
         this.moveObject = moveObject;
     }
@@ -24,18 +24,18 @@ public class ObjectControl : IObjectControl
             {
                 if (((rb.transform.position.x > xmin) && (rb.transform.position.x < xmax)))
                 {
-                    moveObject.MoveForwadBack(velocity, rb, gameobject, false, fixedTime);
+                    moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, false, fixedTime);
                 }
                 else
                 {
                     if (rb.transform.position.x < xmin)
                     {
-                        moveObject.MoveForwadBack(velocity, rb, gameobject, true, fixedTime);
+                        moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, true, fixedTime);
                     }
 
                     else
                     {
-                        moveObject.MoveForwadBack(velocity, rb, gameobject, false, fixedTime);
+                        moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, false, fixedTime);
                     }
                 }
             }
@@ -43,39 +43,22 @@ public class ObjectControl : IObjectControl
             {
                 if (((rb.transform.position.x < xmax) && (rb.transform.position.x > xmin)))
                 {
-                    moveObject.MoveForwadBack(velocity, rb, gameobject, true, fixedTime);
+                    moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, true, fixedTime);
                 }
                 else
                 {
                     if (rb.transform.position.x > xmax)
                     {
-                        moveObject.MoveForwadBack(velocity, rb, gameobject, false, fixedTime);
+                        moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, false, fixedTime);
                     }
 
                     else
                     {
-                        moveObject.MoveForwadBack(velocity, rb, gameobject, true, fixedTime);
+                        moveObject.MoveRigidBodyForwadBack(velocity, rb, gameobject, true, fixedTime);
                     }
                 }
             }
         }
     }
 }
-public class ChangeObjectPosition : IChangeObjectPosition
-{
-    public void MoveForwadBack(Vector3 velocity, Rigidbody moveObject, GameObject gameobject, bool forward, float fixTime)
-    {
-        if (forward)
-        {
-            moveObject.MovePosition(gameobject.transform.position + velocity.x * velocity * fixTime);
-        }
-        else
-        {
-            moveObject.MovePosition(gameobject.transform.position - velocity.x * velocity * fixTime);
-        }
-    }
-}
-public interface IChangeObjectPosition
-{
-    void MoveForwadBack(Vector3 velocity, Rigidbody moveObject, GameObject gameobject, bool forward, float fixTime);
-}
+

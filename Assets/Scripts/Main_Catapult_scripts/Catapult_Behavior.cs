@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Ruch : MonoBehaviour
+public class Catapult_Behavior : MonoBehaviour
 {
     private Camera MainCamera, TargetCamera, BallCamera;
     
@@ -21,7 +21,7 @@ public class Ruch : MonoBehaviour
     private Dictionary<string, float> MaxMainArmXAngle;
     private Vector3 start_ball_position;
     // Start is called before the first frame update
-    public Ruch()
+    public Catapult_Behavior()
     {
         this.MaxMainArmXAngle = new Dictionary<string, float>();
         this.MaxMainArmXAngle.Add("WLmax", 0.697f);

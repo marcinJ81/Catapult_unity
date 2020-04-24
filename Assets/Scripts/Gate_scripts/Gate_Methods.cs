@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateMethods : MonoBehaviour
+public class Gate_Methods : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject topGate;
 
     private readonly IObjectControl moveObject;
-    public GateMethods()
+    public Gate_Methods()
     {
-        this.moveObject = new ObjectControl(new ChangeObjectPosition());
+        this.moveObject = new Gate_ChangeObjectPosition(new Gate_Moving());
     }
     void Start()
     {

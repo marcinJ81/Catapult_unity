@@ -9,6 +9,7 @@ namespace Assets
 {
     public static class SRandomObjectPosition
     {
+        //courdinates for wall, wall is on the ground group
         private static float z_min = -0.3f;
         private static float z_max = 0.3f;
         private static float x_min = -0.4f;

@@ -66,19 +66,17 @@
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Throw_Method.cs" />
+    <Compile Include="Assets\Scripts\CircleTarget\SimpleChangingObjectPosition.cs" />
+    <Compile Include="Assets\Scripts\CircleTarget\Target_Circle_script.cs" />
     <Compile Include="Assets\Scripts\ExtensionMethods_scripts\KeyDetection.cs" />
-    <Compile Include="Assets\Scripts\Gate_scripts\ChangeObjectPosition.cs" />
-    <Compile Include="Assets\Scripts\Gate_scripts\GateMethods.cs" />
-    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Calculating_Velocity.cs" />
-    <Compile Include="Assets\Scripts\Main_Catapult_scripts\DC_Catapult.cs" />
-    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Ruch.cs" />
-    <Compile Include="Assets\Scripts\Random_methods\Instructions_script.cs" />
+    <Compile Include="Assets\Scripts\Gate_scripts\Gate_ChangeObjectPosition.cs" />
+    <Compile Include="Assets\Scripts\Gate_scripts\Gate_Methods.cs" />
+    <Compile Include="Assets\Scripts\Gate_scripts\Gate_Moving.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Catapult_Behavior.cs" />
     <Compile Include="Assets\Scripts\Random_methods\IRandomizeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Random_methods\SRandomObjectPosition.cs" />
-    <Compile Include="Assets\Scripts\Target_scripts\SimpleChangingObjectPosition.cs" />
-    <Compile Include="Assets\Scripts\Target_scripts\Target_camera.cs" />
-    <Compile Include="Assets\Scripts\Target_scripts\Target_Circle_script.cs" />
-    <Compile Include="Assets\Scripts\Target_scripts\Wall_script.cs" />
+    <Compile Include="Assets\Scripts\Target_scripts\Wall_RandomPosition.cs" />
+    <Compile Include="Assets\Scripts\Target_scripts\Wall_Targetcamera.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProject/Catapult5/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
