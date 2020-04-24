@@ -74,8 +74,8 @@ public class Ruch : MonoBehaviour
                     SetNewAngle(catapultTopBreak, x_value, y_value , angle_value);
                 }
             }
-            Debug.Log("kąt Wartość baza = " + base_object.transform.rotation.w.ToString());
-            Debug.Log("kąt Wartość = " + arm_object.transform.rotation.w.ToString());
+           // Debug.Log("kąt Wartość baza = " + base_object.transform.rotation.w.ToString());
+           // Debug.Log("kąt Wartość = " + arm_object.transform.rotation.w.ToString());
         }
     }
     private void SetNewAngle(GameObject catapultTopBreak, int x_value, int y_value, float angle_value)
@@ -104,6 +104,7 @@ public class Ruch : MonoBehaviour
             //angularVelocity mierzy predkosc katowa, stopnie na sekune
             Vr = Vr == 0 ? -6.0f : -Vr;
             GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
+           // GetComponent<Rigidbody>().AddForce();
         }
         
     }
@@ -131,6 +132,7 @@ public class Ruch : MonoBehaviour
     {
         yield return new WaitForSeconds(.3f);
         GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+
     }
 
     Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)

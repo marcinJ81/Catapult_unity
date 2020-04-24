@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{CAC850A3-8647-56FB-9306-E38BAA9946AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -55,16 +56,20 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Unity_enviroment\2019.1.9f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:\Unity_enviroment\2019.1.9f1\Editor\Data\Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
+    <Compile Include="Assets\Scripts\Ball_scripts\Ball_Throw_Method.cs" />
+    <Compile Include="Assets\Scripts\ExtensionMethods_scripts\KeyDetection.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\ChangeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\GateMethods.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\Calculating_Velocity.cs" />

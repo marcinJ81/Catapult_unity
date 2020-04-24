@@ -11,12 +11,17 @@ public class Ball_script : MonoBehaviour
     public GameObject textInfo;
     public GameObject leftBrakeCatapult;
     public GameObject rightBrakeCatapult;
+    public GameObject mainPartOfCatapult;
 
     private Vector3 startPosition_Ball;
     private Quaternion startRotation_Arm;
     private Quaternion startRotation_Base;
     private Quaternion startRotation_LeftBrake;
     private Quaternion startRotation_RightBrake;
+    private Quaternion mainPartRotation;
+    private float mainPartAngle;
+    private float mainPartAngleRadius;
+
     void Start()
     {
         startPosition_Ball = transform.localPosition;
@@ -32,6 +37,9 @@ public class Ball_script : MonoBehaviour
         RestartBallPosition(KeyCode.R);
         ShowSpeedDistanceMassAboutBall(textInfo.GetComponent(typeof(TextMesh)) as TextMesh, this.GetComponent<Rigidbody>(),
             startPosition_Ball,this.transform.position);
+        mainPartAngle = mainPartOfCatapult.transform.rotation.w;
+        mainPartAngleRadius = mainPartOfCatapult.transform.rotation.z;
+        Debug.Log("");
     }
 
     private void RestartBallPosition(KeyCode key)
@@ -56,6 +64,11 @@ public class Ball_script : MonoBehaviour
         textmesh.text = "Mass = " + rb.mass.ToString();
         textmesh.text += "\nSpeed= " + speed.ToString("n2");
         textmesh.text += "\nDistance= " + distance.ToString("n2");
+        textmesh.text += "\nEuler Angles= " 
+           + "x: " + mainPartOfCatapult.transform.eulerAngles.x.ToString("n0")
+           + ",y: " + mainPartOfCatapult.transform.eulerAngles.y.ToString("n0")
+           + ",z: " + mainPartOfCatapult.transform.eulerAngles.x.ToString("n0");
+
     }
    
 }
