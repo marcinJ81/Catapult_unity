@@ -8,40 +8,21 @@ public class Target_Circle_script : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject targetCircleObject;
-    public GameObject groundObject;
-
-    private float speed = 5f;
-    void Start()
+    public float speed = 5f;
+        
+    private readonly IMoveCircle movecircle;
+    public Target_Circle_script()
     {
-       
+        this.movecircle = new SimpleChangingObjectsPosition();
     }
-
     // Update is called once per frame
     void Update()
     {
-        KeyCode key = KeyDetecion.KeysDown().Any() ? KeyDetecion.KeysDown().First() : KeyCode.P;
-        MoveCircle( key, 5f, Time.deltaTime);
+        KeyCode key = KeyDetecion.KeysDown().Any() ? KeyDetecion.KeysDown().First() : KeyCode.AltGr;
+        this.movecircle.MoveCircle( key, speed, Time.deltaTime, targetCircleObject);
     }
-    void MoveCircle(KeyCode key, float speed, float deltatime)
-    {
-        if (key == KeyCode.LeftArrow)
-        {
-            targetCircleObject.transform.Translate(0, speed * Time.deltaTime, 0);
-        }
-        if (key == KeyCode.RightArrow)
-        {
-            targetCircleObject.transform.Translate(0, -speed * Time.deltaTime, 0);
-        }
-        if (key == KeyCode.DownArrow)
-        {
-            targetCircleObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
-        if (key == KeyCode.UpArrow)
-        {
-            targetCircleObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
-    }
-   
 }
+
+
 
     
