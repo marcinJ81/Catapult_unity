@@ -45,7 +45,7 @@ public class Catapult_Behavior : MonoBehaviour
         SetEnabledCamera(KeyCode.Alpha3, false, false, true);
 
         //Throw ball
-        ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,1.0f);
+        ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,1.0f, ball_gameObject);
         //MoveForwardObject(15.0f, ball_gameObject, KeyCode.Space);
 
         //use keys arrow to rotate
@@ -95,16 +95,17 @@ public class Catapult_Behavior : MonoBehaviour
             BallCamera.enabled = BallCam;
         }
     }
-    private void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time)
+    private void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time, GameObject throwBall)
     {
-        //Vector3 Vo = CalculateVelocity(target, origin, time);
+        Vector3 Vo = CalculateVelocity(target, origin, time);
 
         if (Input.GetKeyDown(key))
         {
-            //angularVelocity mierzy predkosc katowa, stopnie na sekune
+            //angularVelocity mierzy predkosc katowa, stopnie na sekunde
             Vr = Vr == 0 ? -6.0f : -Vr;
             GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
-           // GetComponent<Rigidbody>().AddForce();
+            var rb = throwBall.GetComponent<Rigidbody>();
+            rb.MovePosition(throwBall.transform.position + 0.1f * Vo *time);
         }
         
     }
@@ -139,25 +140,25 @@ public class Catapult_Behavior : MonoBehaviour
     {
         
         Vector3 distance = target - origin;
-        Debug.Log("target : " + target.x.ToString() + ";" + target.y.ToString() + ";" + target.z.ToString());
-        Debug.Log("origin : " + origin.x.ToString() + ";" + origin.y.ToString() + ";" + origin.z.ToString());
+      //  Debug.Log("target : " + target.x.ToString() + ";" + target.y.ToString() + ";" + target.z.ToString());
+      // Debug.Log("origin : " + origin.x.ToString() + ";" + origin.y.ToString() + ";" + origin.z.ToString());
         Vector3 distanceXZ = distance;
-        Debug.Log("distance : " + distance.x.ToString() + ";" + distance.y.ToString() +";"+ distance.z.ToString());
+      //  Debug.Log("distance : " + distance.x.ToString() + ";" + distance.y.ToString() +";"+ distance.z.ToString());
         distanceXZ.y = 0f;
 
         float Sy = distance.y;
         float Sxz = distanceXZ.magnitude; //dlugosc vectora
-        Debug.Log("distanceXZ.magnitude : " + Sxz.ToString());
+      //  Debug.Log("distanceXZ.magnitude : " + Sxz.ToString());
         float Vxz = Sxz / (time * 10000);
-        Debug.Log("time : " + time.ToString());
-        Debug.Log("Vxz : " + Vxz.ToString());
+     //   Debug.Log("time : " + time.ToString());
+     //   Debug.Log("Vxz : " + Vxz.ToString());
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
 
         Vector3 result = distanceXZ.normalized;
         result *= Vxz;
         result.y = Vy;
 
-        Debug.Log("resultat : " + result.x.ToString() + ";" + result.y.ToString() + ";" + result.z.ToString());
+     //   Debug.Log("resultat : " + result.x.ToString() + ";" + result.y.ToString() + ";" + result.z.ToString());
         return result;
     }
     private Vector3 CalculteHalfDistance(Vector3 startPosition, Vector3 emdPosition, float time)

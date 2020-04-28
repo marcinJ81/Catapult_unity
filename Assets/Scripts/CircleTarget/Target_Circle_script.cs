@@ -10,8 +10,12 @@ public class Target_Circle_script : MonoBehaviour
     public GameObject targetCircleObject;
     public float speed = 5f;
         
-    private readonly IMoveCircle movecircle;
+    private  IMoveCircle movecircle;
     public Target_Circle_script()
+    {
+       // this.movecircle = new SimpleChangingObjectsPosition();
+    }
+    private void Start()
     {
         this.movecircle = new SimpleChangingObjectsPosition();
     }

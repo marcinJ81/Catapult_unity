@@ -2884,14 +2884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348f74d71d0361345b58cb24c3730a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target_position: {fileID: 1932157558}
-  ball_gameObject: {fileID: 1843956031}
-  brake_object: {fileID: 216889775}
-  base_object: {fileID: 1376078127}
-  left_arm_break: {fileID: 1724260843}
-  right_arm_break: {fileID: 1901727526}
-  arm_object: {fileID: 84094591}
-  ground_target_position: {fileID: 1069927831}
 --- !u!4 &772336912
 Transform:
   m_ObjectHideFlags: 0
@@ -3847,6 +3839,7 @@ GameObject:
   - component: {fileID: 1069927833}
   - component: {fileID: 1069927832}
   - component: {fileID: 1069927834}
+  - component: {fileID: 1069927835}
   m_Layer: 0
   m_Name: Target_circle
   m_TagString: Untagged
@@ -3929,7 +3922,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCircleObject: {fileID: 1069927831}
-  groundObject: {fileID: 50798949}
+  speed: 5
+--- !u!114 &1069927835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069927831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c97cbf2d7d753b44bed149167027f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1125172052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6294,12 +6299,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arm: {fileID: 1376078127}
-  wallLocation: {fileID: 0}
   bodyCatapult: {fileID: 216889775}
   textInfo: {fileID: 946317653}
   leftBrakeCatapult: {fileID: 1724260843}
   rightBrakeCatapult: {fileID: 1901727526}
   mainPartOfCatapult: {fileID: 1376078127}
+  circleOnTheGroundObject: {fileID: 1069927831}
 --- !u!1 &1883994723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6949,7 +6954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0e176ac27fb584785ea7f02785c90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground: {fileID: 50798949}
 --- !u!1 &1974683029
 GameObject:
   m_ObjectHideFlags: 0
@@ -7154,7 +7158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7b9ed06e2b84e41bf4d7f4027c75bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 1932157558}
 --- !u!1 &2016476461
 GameObject:
   m_ObjectHideFlags: 0

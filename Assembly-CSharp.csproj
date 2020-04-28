@@ -66,9 +66,11 @@
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Throw_Method.cs" />
+    <Compile Include="Assets\Scripts\CircleTarget\Model_ControlsCircleGroundTarget.cs" />
     <Compile Include="Assets\Scripts\CircleTarget\SimpleChangingObjectPosition.cs" />
     <Compile Include="Assets\Scripts\CircleTarget\Target_Circle_script.cs" />
     <Compile Include="Assets\Scripts\ExtensionMethods_scripts\KeyDetection.cs" />
+    <Compile Include="Assets\Scripts\ExtensionMethods_scripts\SCheckKeyCode.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_ChangeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Methods.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Moving.cs" />

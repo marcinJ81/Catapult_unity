@@ -6,14 +6,15 @@ public class Ball_script : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject arm;
-    public GameObject wallLocation;
     public GameObject bodyCatapult;
     public GameObject textInfo;
     public GameObject leftBrakeCatapult;
     public GameObject rightBrakeCatapult;
     public GameObject mainPartOfCatapult;
+    public GameObject circleOnTheGroundObject;
 
     private Vector3 startPosition_Ball;
+    private Vector3 startPosition_CircleOnTheGround;
     private Quaternion startRotation_Arm;
     private Quaternion startRotation_Base;
     private Quaternion startRotation_LeftBrake;
@@ -29,6 +30,7 @@ public class Ball_script : MonoBehaviour
         startRotation_Base = bodyCatapult.transform.rotation;
         startRotation_LeftBrake = leftBrakeCatapult.transform.rotation;
         startRotation_RightBrake = rightBrakeCatapult.transform.rotation;
+        startPosition_CircleOnTheGround = circleOnTheGroundObject.transform.position;
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class Ball_script : MonoBehaviour
             transform.position = startPosition_Ball;
             arm.transform.rotation = startRotation_Arm;
             bodyCatapult.transform.rotation = startRotation_Base;
+            circleOnTheGroundObject.transform.position = startPosition_CircleOnTheGround;
             RestartBrakeCatapultPosition();
         }
     }
