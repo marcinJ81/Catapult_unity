@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Methods.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Moving.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\Catapult_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Catapult_ThrowningBall.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\Catapult_TurnOver.cs" />
     <Compile Include="Assets\Scripts\Random_methods\CoordinatesForRandomize.cs" />
     <Compile Include="Assets\Scripts\Random_methods\IRandomizeObjectPosition.cs" />
