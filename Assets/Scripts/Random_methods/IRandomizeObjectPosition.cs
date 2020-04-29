@@ -13,13 +13,7 @@ namespace Assets
         void SetCoordinates(string cordinatesName,float minValue, float maxValue);
        
     }
-    public class CoordinatesForRandomoize
-    {
-        public string Coordinates_Name { get; set; }
-        public float Coordinates_ValueMin { get; set; }
-        public float Coordinates_ValueMax { get; set; }
-    }
-
+    
     public class RandomizeObjectPosition : IRandomizeObjectPosition
     {
         private List<CoordinatesForRandomoize> coordinates { get; set; }

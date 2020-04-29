@@ -74,7 +74,9 @@
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_ChangeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Methods.cs" />
     <Compile Include="Assets\Scripts\Gate_scripts\Gate_Moving.cs" />
+    <Compile Include="Assets\Scripts\Main_Catapult_scripts\Camera_Definitions.cs" />
     <Compile Include="Assets\Scripts\Main_Catapult_scripts\Catapult_Behavior.cs" />
+    <Compile Include="Assets\Scripts\Random_methods\CoordinatesForRandomize.cs" />
     <Compile Include="Assets\Scripts\Random_methods\IRandomizeObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Random_methods\SRandomObjectPosition.cs" />
     <Compile Include="Assets\Scripts\Target_scripts\Wall_RandomPosition.cs" />

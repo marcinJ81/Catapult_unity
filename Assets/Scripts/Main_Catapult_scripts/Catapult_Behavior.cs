@@ -20,6 +20,7 @@ public class Catapult_Behavior : MonoBehaviour
 
     private Dictionary<string, float> MaxMainArmXAngle;
     private Vector3 start_ball_position;
+    private IEnabledCamera setCamera;
     // Start is called before the first frame update
     public Catapult_Behavior()
     {
@@ -33,6 +34,7 @@ public class Catapult_Behavior : MonoBehaviour
         MainCamera = GameObject.Find("Main_Cam").GetComponent<Camera>();
         TargetCamera = GameObject.Find("Target_Cam").GetComponent<Camera>();
         BallCamera = GameObject.Find("Ball_Cam").GetComponent<Camera>();
+        this.setCamera = new Camera_Definitions(MainCamera,TargetCamera,BallCamera);
         start_ball_position = ball_gameObject.transform.position;
     }
 
@@ -40,9 +42,9 @@ public class Catapult_Behavior : MonoBehaviour
     void Update()
     {
         //change camera
-        SetEnabledCamera(KeyCode.Alpha1, false, true, false);
-        SetEnabledCamera(KeyCode.Alpha2, true, false, false);
-        SetEnabledCamera(KeyCode.Alpha3, false, false, true);
+        setCamera.SetEnabledCamera(KeyCode.Alpha1, false, true, false);
+        setCamera.SetEnabledCamera(KeyCode.Alpha2, true, false, false);
+        setCamera.SetEnabledCamera(KeyCode.Alpha3, false, false, true);
 
         //Throw ball
         ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,1.0f, ball_gameObject);
@@ -86,15 +88,7 @@ public class Catapult_Behavior : MonoBehaviour
         right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
     }
 
-   private void SetEnabledCamera(KeyCode key, bool MainCam, bool TargetCam, bool BallCam)
-    {
-        if (Input.GetKeyDown(key))
-        {
-            MainCamera.enabled = MainCam;
-            TargetCamera.enabled = TargetCam;
-            BallCamera.enabled = BallCam;
-        }
-    }
+  
     private void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time, GameObject throwBall)
     {
         Vector3 Vo = CalculateVelocity(target, origin, time);
