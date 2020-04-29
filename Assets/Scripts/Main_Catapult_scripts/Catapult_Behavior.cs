@@ -18,15 +18,14 @@ public class Catapult_Behavior : MonoBehaviour
     public GameObject ground_target_position;
     public float Vr =  0f;
 
-    private Dictionary<string, float> MaxMainArmXAngle;
+   
     private Vector3 start_ball_position;
     private IEnabledCamera setCamera;
+    private IRotationCatapult rotateCapult;
     // Start is called before the first frame update
     public Catapult_Behavior()
     {
-        this.MaxMainArmXAngle = new Dictionary<string, float>();
-        this.MaxMainArmXAngle.Add("WLmax", 0.697f);
-        this.MaxMainArmXAngle.Add("WRmax", 0.7042f);       
+           
     }
     void Start()
     {
@@ -36,6 +35,7 @@ public class Catapult_Behavior : MonoBehaviour
         BallCamera = GameObject.Find("Ball_Cam").GetComponent<Camera>();
         this.setCamera = new Camera_Definitions(MainCamera,TargetCamera,BallCamera);
         start_ball_position = ball_gameObject.transform.position;
+        this.rotateCapult = new Catapult_TurnOver(base_object, left_arm_break, right_arm_break, brake_object);
     }
 
     // Update is called once per frame
@@ -51,43 +51,10 @@ public class Catapult_Behavior : MonoBehaviour
         //MoveForwardObject(15.0f, ball_gameObject, KeyCode.Space);
 
         //use keys arrow to rotate
-        RotationLeftORightGameObject(brake_object, base_object.transform.rotation.w, KeyCode.LeftArrow, 0, -1, 0.1f);
-        RotationLeftORightGameObject(brake_object, base_object.transform.rotation.w, KeyCode.RightArrow, 0, 1, 0.1f);
-  
+        rotateCapult.RotationLeftORightGameObject( base_object.transform.rotation.w, KeyCode.LeftArrow, 0, -1, 0.1f);
+        rotateCapult.RotationLeftORightGameObject(base_object.transform.rotation.w, KeyCode.RightArrow, 0, 1, 0.1f);
     }
-    private void RotationLeftORightGameObject(GameObject catapultTopBreak, float rotationValue, KeyCode key, int x_value, int y_value, float angle_value)
-    { 
-        //not working good
-        if (Input.GetKey(key))
-        {
-            if (y_value > 0)
-            {
-                //right arrow
-                if ((rotationValue > MaxMainArmXAngle["WLmax"]) || (rotationValue < MaxMainArmXAngle["WRmax"]))
-                {
-                    SetNewAngle(catapultTopBreak, x_value, y_value, angle_value);
-                }
-            }
-            else
-            {
-                //left arrow
-                if ((rotationValue > MaxMainArmXAngle["WLmax"]) || (rotationValue < MaxMainArmXAngle["WRmax"]))
-                {
-                    SetNewAngle(catapultTopBreak, x_value, y_value , angle_value);
-                }
-            }
-           // Debug.Log("kąt Wartość baza = " + base_object.transform.rotation.w.ToString());
-           // Debug.Log("kąt Wartość = " + arm_object.transform.rotation.w.ToString());
-        }
-    }
-    private void SetNewAngle(GameObject catapultTopBreak, int x_value, int y_value, float angle_value)
-    {
-        catapultTopBreak.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-        base_object.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-        left_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-        right_arm_break.transform.Rotate(new Vector3(x_value, y_value), angle_value);
-    }
-
+   
   
     private void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time, GameObject throwBall)
     {
