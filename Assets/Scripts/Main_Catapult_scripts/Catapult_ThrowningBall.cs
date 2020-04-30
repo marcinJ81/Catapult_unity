@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public interface IThrowBall
 {
     void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time);
+    void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time, float rotationX);
 }
 public class Catapult_ThrowningBall : IThrowBall
 {
@@ -21,6 +23,8 @@ public class Catapult_ThrowningBall : IThrowBall
         this.mainPart = mainPart;
     }
 
+   
+
     public void ThrowBall(KeyCode key, Vector3 target, Vector3 origin, float time)
     {
         Vector3 Vo = CalculateVelocity(target, origin, time);
@@ -33,7 +37,20 @@ public class Catapult_ThrowningBall : IThrowBall
             rbBall.MovePosition(this.ball_gameObject.transform.position + 0.1f * Vo * time);
         }
     }
-   private Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)
+
+    public void ThrowBall(KeyCode key, Vector3 target, Vector3 origin,float time, float rotationX)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            // mainPart.transform.rotation.Set(-0.65f,0f,0f,100);
+            // if ((rotationX > -0.64f) && (rotationX < -0.65f))
+            Vr = Vr == 0 ? -6.0f : -Vr;
+            this.mainPart.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
+            rbBall.AddForce(0, 2000, 5000);
+        }
+    }
+
+    private Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)
     {
 
         Vector3 distance = target - origin;

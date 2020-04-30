@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity;
 using UnityEngine;
 
 public class Catapult_Behavior : MonoBehaviour
@@ -23,20 +24,25 @@ public class Catapult_Behavior : MonoBehaviour
     // Start is called before the first frame update
     public Catapult_Behavior()
     {
-        //this.rotateCapult = new Catapult_TurnOver(base_object, left_arm_break, right_arm_break, brake_object);
-        //this.throwBall = new Catapult_ThrowningBall(Vr, ball_gameObject);
+       
+    }
+
+    private void Awake()
+    {
+        this.setCamera = new Camera_Definitions(
+           GameObject.Find("Main_Cam").GetComponent<Camera>(),
+           GameObject.Find("Target_Cam").GetComponent<Camera>(),
+           GameObject.Find("Ball_Cam").GetComponent<Camera>());
+        start_ball_position = ball_gameObject.transform.position;
+
+        // var container = new UnityContainer();
+        this.rotateCapult = new Catapult_TurnOver(mainPartCatapult, left_arm_break, right_arm_break, brake_object);
+        this.throwBall = new Catapult_ThrowningBall(Vr, ball_gameObject, mainPartCatapult);
     }
     void Start()
     {
         StartCoroutine(stopParam());
 
-        this.setCamera = new Camera_Definitions(
-            GameObject.Find("Main_Cam").GetComponent<Camera>(),
-            GameObject.Find("Target_Cam").GetComponent<Camera>(), 
-            GameObject.Find("Ball_Cam").GetComponent<Camera>());
-        start_ball_position = ball_gameObject.transform.position;
-        this.rotateCapult = new Catapult_TurnOver(mainPartCatapult, left_arm_break, right_arm_break, brake_object);
-        this.throwBall = new Catapult_ThrowningBall(Vr, ball_gameObject, mainPartCatapult);
     }
 
     // Update is called once per frame
@@ -47,8 +53,10 @@ public class Catapult_Behavior : MonoBehaviour
         setCamera.SetEnabledCamera(KeyCode.Alpha2, true, false, false);
         setCamera.SetEnabledCamera(KeyCode.Alpha3, false, false, true);
 
+        //Debug.Log("Rotation local X: " + mainPartCatapult.transform.localRotation.x);
+        //Debug.Log("Angle W: " + mainPartCatapult.transform.rotation.w);
         //Throw ball
-        throwBall.ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,Time.deltaTime);
+        throwBall.ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,Time.deltaTime, mainPartCatapult.transform.localRotation.x);
         
         //use keys arrow to rotate
         rotateCapult.RotationLeftORightGameObject(mainPartCatapult.transform.rotation.w, KeyCode.LeftArrow, 0, -1, 0.1f);

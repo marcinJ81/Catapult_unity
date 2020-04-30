@@ -11,13 +11,14 @@ public class Target_Circle_script : MonoBehaviour
     public float speed = 5f;
         
     private  IMoveCircle movecircle;
-    public Target_Circle_script()
+
+    private void Awake()
     {
-       // this.movecircle = new SimpleChangingObjectsPosition();
+        this.movecircle = new SimpleChangingObjectsPosition();
     }
     private void Start()
     {
-        this.movecircle = new SimpleChangingObjectsPosition();
+        
     }
     // Update is called once per frame
     void Update()

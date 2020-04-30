@@ -11,6 +11,7 @@ public class Camera_Definitions : IEnabledCamera
     private Camera TargetCamera;
     private Camera BallCamera;
 
+    public Camera_Definitions() { }
     public Camera_Definitions(Camera mainCamera, Camera targetCamera, Camera ballCamera)
     {
         MainCamera = mainCamera;
