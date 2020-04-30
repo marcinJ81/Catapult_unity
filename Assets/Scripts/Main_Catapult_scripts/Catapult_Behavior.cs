@@ -29,14 +29,24 @@ public class Catapult_Behavior : MonoBehaviour
 
     private void Awake()
     {
+        SetValueCameraObject();
+        start_ball_position = ball_gameObject.transform.position;
+        SetValueRotateCatapultObject();
+        SetValueToThrowningBall();
+    }
+    private void SetValueRotateCatapultObject()
+    {
+        this.rotateCapult = new Catapult_TurnOver(mainPartCatapult, left_arm_break, right_arm_break, brake_object);
+    }
+    private void SetValueCameraObject()
+    {
         this.setCamera = new Camera_Definitions(
            GameObject.Find("Main_Cam").GetComponent<Camera>(),
            GameObject.Find("Target_Cam").GetComponent<Camera>(),
            GameObject.Find("Ball_Cam").GetComponent<Camera>());
-        start_ball_position = ball_gameObject.transform.position;
-
-        // var container = new UnityContainer();
-        this.rotateCapult = new Catapult_TurnOver(mainPartCatapult, left_arm_break, right_arm_break, brake_object);
+    }
+    private void SetValueToThrowningBall()
+    {
         this.throwBall = new Catapult_ThrowningBall(Vr, ball_gameObject, mainPartCatapult);
     }
     void Start()
@@ -49,16 +59,21 @@ public class Catapult_Behavior : MonoBehaviour
     void Update()
     {
         //change camera
+        if (setCamera == null)
+            SetValueCameraObject();
         setCamera.SetEnabledCamera(KeyCode.Alpha1, false, true, false);
         setCamera.SetEnabledCamera(KeyCode.Alpha2, true, false, false);
         setCamera.SetEnabledCamera(KeyCode.Alpha3, false, false, true);
 
-        //Debug.Log("Rotation local X: " + mainPartCatapult.transform.localRotation.x);
-        //Debug.Log("Angle W: " + mainPartCatapult.transform.rotation.w);
         //Throw ball
-        throwBall.ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,Time.deltaTime, mainPartCatapult.transform.localRotation.x);
-        
+        if(throwBall == null)
+            SetValueToThrowningBall();
+        throwBall.ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,Time.deltaTime,
+            mainPartCatapult.transform.localRotation.x);
+
         //use keys arrow to rotate
+        if (rotateCapult == null)
+            SetValueRotateCatapultObject();
         rotateCapult.RotationLeftORightGameObject(mainPartCatapult.transform.rotation.w, KeyCode.LeftArrow, 0, -1, 0.1f);
         rotateCapult.RotationLeftORightGameObject(mainPartCatapult.transform.rotation.w, KeyCode.RightArrow, 0, 1, 0.1f);
     }

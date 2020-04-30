@@ -43,10 +43,18 @@ public class Catapult_ThrowningBall : IThrowBall
         if (Input.GetKeyDown(key))
         {
             // mainPart.transform.rotation.Set(-0.65f,0f,0f,100);
-            // if ((rotationX > -0.64f) && (rotationX < -0.65f))
-            Vr = Vr == 0 ? -9.0f : -Vr;
-            this.mainPart.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
-            rbBall.AddForce(0, 0, 500*time,ForceMode.Impulse);
+            //if ((rotationX < -0.64f) && (rotationX > -0.72f))
+            //{
+                Debug.Log("Rotacja w zakresie" + rotationX.ToString());
+
+                Vr = Vr == 0 ? -6.0f : -Vr;
+                this.mainPart.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
+               
+                this.rbBall.AddForceAtPosition(Vector3.forward * time*100f,target);
+            //}
+
+
+            //this.rbBall.MovePosition(Vector3.forward * time );
         }
     }
 
