@@ -41,7 +41,7 @@ public class Catapult_Behavior : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(stopParam());
+      //  StartCoroutine(stopParam());
 
     }
 

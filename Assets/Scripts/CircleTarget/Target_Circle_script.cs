@@ -24,6 +24,8 @@ public class Target_Circle_script : MonoBehaviour
     void Update()
     {
         KeyCode key = KeyDetecion.KeysDown().Any() ? KeyDetecion.KeysDown().First() : KeyCode.AltGr;
+        if (movecircle == null)
+            Awake();
         this.movecircle.MoveCircle( key, speed, Time.deltaTime, targetCircleObject);
     }
 }

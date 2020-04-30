@@ -44,9 +44,9 @@ public class Catapult_ThrowningBall : IThrowBall
         {
             // mainPart.transform.rotation.Set(-0.65f,0f,0f,100);
             // if ((rotationX > -0.64f) && (rotationX < -0.65f))
-            Vr = Vr == 0 ? -6.0f : -Vr;
+            Vr = Vr == 0 ? -9.0f : -Vr;
             this.mainPart.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, Vr);
-            rbBall.AddForce(0, 2000, 5000);
+            rbBall.AddForce(0, 0, 500*time,ForceMode.Impulse);
         }
     }
 
