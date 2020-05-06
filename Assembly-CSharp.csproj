@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BalisticLine\Balistic_MeshRender.cs" />
+    <Compile Include="Assets\Scripts\BalisticLine\Balistic_RenderLine.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Camera.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_script.cs" />
     <Compile Include="Assets\Scripts\Ball_scripts\Ball_Throw_Method.cs" />
