@@ -10,7 +10,7 @@ public class Balistic_RenderLine : MonoBehaviour
     public float velocity = 20;
     public float angle = 45;
     public int resolution = 10;
-    private float g;
+    public float g;
     private float radianAngle;
 
     private void Awake()
@@ -34,7 +34,7 @@ public class Balistic_RenderLine : MonoBehaviour
         lr.positionCount = resolution + 1;
         lr.SetPositions(CalculateArcArray());
     }
-    private Vector3[] CalculateArcArray()
+   public Vector3[] CalculateArcArray()
     {
         Vector3[] arcArray = new Vector3[resolution + 1];
 
@@ -47,10 +47,17 @@ public class Balistic_RenderLine : MonoBehaviour
         }
         return arcArray;
     }
-    private Vector3 CalculateArcPoint(float t, float maxDistance)
+    public Vector3 CalculateArcPoint(float t, float maxDistance)
     {
         float x = t * maxDistance;
         float y = x * Mathf.Tan(radianAngle) - ((g * x * x) / (2 * velocity * velocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle)));
-        return new Vector3(0, y, x);
+        return new Vector3(x, y);
+    }
+    public float CalculateTimeOfFly()
+    {
+        float result;
+        float maxDistance = (velocity * velocity * Mathf.Sin(2 * radianAngle)) / g;
+        result = maxDistance / velocity * Mathf.Cos(radianAngle);
+        return result;
     }
 }

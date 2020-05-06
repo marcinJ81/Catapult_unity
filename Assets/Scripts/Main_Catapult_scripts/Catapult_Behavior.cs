@@ -21,14 +21,16 @@ public class Catapult_Behavior : MonoBehaviour
     private IEnabledCamera setCamera;
     private IRotationCatapult rotateCapult;
     private IThrowBall throwBall;
-    // Start is called before the first frame update
-    public Catapult_Behavior()
-    {
-       
-    }
 
+    private Balistic_RenderLine throwLine;
+    private float g;
+    public float radianAngle;
     private void Awake()
     {
+        //  StartCoroutine(stopParam());
+        throwLine = new Balistic_RenderLine();
+        g = Mathf.Abs(Physics2D.gravity.y);
+        //
         SetValueCameraObject();
         start_ball_position = ball_gameObject.transform.position;
         SetValueRotateCatapultObject();
@@ -49,12 +51,6 @@ public class Catapult_Behavior : MonoBehaviour
     {
         this.throwBall = new Catapult_ThrowningBall(Vr, ball_gameObject, mainPartCatapult);
     }
-    void Start()
-    {
-      //  StartCoroutine(stopParam());
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -66,10 +62,13 @@ public class Catapult_Behavior : MonoBehaviour
         setCamera.SetEnabledCamera(KeyCode.Alpha3, false, false, true);
 
         //Throw ball
-        if(throwBall == null)
+        if (throwBall == null)
+        {
             SetValueToThrowningBall();
+        }
+        fly();
         throwBall.ThrowBall(KeyCode.Space,target_position.transform.position, ball_gameObject.transform.position,Time.deltaTime,
-            mainPartCatapult.transform.localRotation.x);
+        mainPartCatapult.transform.localRotation.x);
 
         //use keys arrow to rotate
         if (rotateCapult == null)
@@ -83,8 +82,46 @@ public class Catapult_Behavior : MonoBehaviour
         GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
     }
 
-    
-    
+    void fly()
+    {
+        var rb = ball_gameObject.GetComponent<Rigidbody>();
+        if(Input.GetKey(KeyCode.Space))
+       {
+            rb.MovePosition(CalculateArcArray()[1]);
+       }
+    }
+    public Vector3[] CalculateArcArray()
+    {
+        Vector3[] arcArray = new Vector3[throwLine.resolution + 1];
+
+        radianAngle = Mathf.Deg2Rad * throwLine.angle;
+
+        Debug.Log("radianAngle=" + radianAngle.ToString());
+        Debug.Log("Velocity=" + throwLine.velocity.ToString());
+        Debug.Log("Mathf.Sin(2 * radianAngle)=" + Mathf.Sin(2 * radianAngle).ToString());
+        Debug.Log("throwLine.g=" + g.ToString());
+
+        float maxDistance = (throwLine.velocity * throwLine.velocity * Mathf.Sin(2 * radianAngle)) / g;
+        Debug.Log("maxDistance=" + maxDistance.ToString());
+        for (int i = 0; i <= throwLine.resolution; i++)
+        {
+            float t = (float)i / (float)throwLine.resolution;
+            arcArray[i] = CalculateArcPoint(t, maxDistance);
+        }
+        return arcArray;
+    }
+    public Vector3 CalculateArcPoint(float t, float maxDistance)
+    {
+        float x = t * maxDistance;
+        
+        
+        Debug.Log("X=" + x.ToString());
+        float y = x * Mathf.Tan(radianAngle) - ((g * x * x) / 
+            (2 * throwLine.velocity * throwLine.velocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle)));
+        Debug.Log("Y=" + y.ToString());
+        return new Vector3(x, y,0);
+    }
+
 }
 
 
