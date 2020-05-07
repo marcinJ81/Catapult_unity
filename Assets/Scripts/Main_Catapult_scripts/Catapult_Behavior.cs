@@ -84,25 +84,31 @@ public class Catapult_Behavior : MonoBehaviour
 
     void fly()
     {
+        return;
         var rb = ball_gameObject.GetComponent<Rigidbody>();
         if(Input.GetKey(KeyCode.Space))
        {
-            rb.MovePosition(CalculateArcArray()[1]);
-       }
+            for (int i = 0; i < CalculateArcArray().Count(); i++)
+            {
+                
+                rb.MovePosition(CalculateArcArray()[i]);
+            }
+        }
     }
+   
     public Vector3[] CalculateArcArray()
     {
         Vector3[] arcArray = new Vector3[throwLine.resolution + 1];
 
         radianAngle = Mathf.Deg2Rad * throwLine.angle;
-
-        Debug.Log("radianAngle=" + radianAngle.ToString());
-        Debug.Log("Velocity=" + throwLine.velocity.ToString());
-        Debug.Log("Mathf.Sin(2 * radianAngle)=" + Mathf.Sin(2 * radianAngle).ToString());
-        Debug.Log("throwLine.g=" + g.ToString());
+        
+        //Debug.Log("radianAngle=" + radianAngle.ToString());
+        //Debug.Log("Velocity=" + throwLine.velocity.ToString());
+        //Debug.Log("Mathf.Sin(2 * radianAngle)=" + Mathf.Sin(2 * radianAngle).ToString());
+        //Debug.Log("throwLine.g=" + g.ToString());
 
         float maxDistance = (throwLine.velocity * throwLine.velocity * Mathf.Sin(2 * radianAngle)) / g;
-        Debug.Log("maxDistance=" + maxDistance.ToString());
+      //  Debug.Log("maxDistance=" + maxDistance.ToString());
         for (int i = 0; i <= throwLine.resolution; i++)
         {
             float t = (float)i / (float)throwLine.resolution;
@@ -113,13 +119,18 @@ public class Catapult_Behavior : MonoBehaviour
     public Vector3 CalculateArcPoint(float t, float maxDistance)
     {
         float x = t * maxDistance;
-        
-        
-        Debug.Log("X=" + x.ToString());
+       // Debug.Log("X=" + x.ToString());
         float y = x * Mathf.Tan(radianAngle) - ((g * x * x) / 
             (2 * throwLine.velocity * throwLine.velocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle)));
-        Debug.Log("Y=" + y.ToString());
+      //  Debug.Log("Y=" + y.ToString());
         return new Vector3(x, y,0);
+    }
+
+    public float CalculateTimeOfFly(float velocity, float radianangle, float maxdistance)
+    {
+        float timefly;
+        timefly = maxdistance / velocity * Mathf.Cos(radianAngle);
+        return timefly;
     }
 
 }

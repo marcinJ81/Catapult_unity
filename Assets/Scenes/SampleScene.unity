@@ -313,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50798949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.7, y: 0, z: 0}
+  m_LocalPosition: {x: 57.7, y: -1, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 50}
   m_Children:
   - {fileID: 1932157562}
@@ -4072,7 +4072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253373973}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 97, y: -14.68, z: 7}
+  m_LocalPosition: {x: 97, y: -15.68, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1125172056}
@@ -4266,6 +4266,7 @@ MonoBehaviour:
   arm_object: {fileID: 84094591}
   ground_target_position: {fileID: 1069927831}
   Vr: 9
+  radianAngle: 0
 --- !u!1 &1447822586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6138,9 +6139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd2d597c9a58494eb6fbe024d84da1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 20
+  velocity: 22
   angle: 45
   resolution: 10
+  g: 0
 --- !u!1 &1883994723
 GameObject:
   m_ObjectHideFlags: 0
